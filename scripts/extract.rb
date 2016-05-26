@@ -40,7 +40,7 @@ unless @ios_zip.empty?
     system("tar -xvf #{@ios_zip.first} --directory vuforia/ios")
 
     puts 'Copying Build Assets'
-    system('cp -r vuforia/android/build/include/ build/include/')
+    system('cp -r vuforia/ios/build/include/ build/include/')
     system('cp -r vuforia/ios/build/lib/ build/lib/')
 
     puts 'Cleaning iOS'

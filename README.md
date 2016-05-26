@@ -25,7 +25,7 @@ Cordova-Plugin-Vuforia requires the following:
 * [Cordova][cordova] (Minimum 5.0 - tested to 6.1.1)
   * `cordova-ios@3.*` instructions on `cordova-ios-3` branch
   * `cordova-ios@4.*` (default for Cordova 6.*) instructions are below
-* [Vudforia][vuforia-download] you will need to download the vuforia SDK for iOS and Android. See below for in-depth instructions.
+* [Vuforia][vuforia-download] you will need to download the vuforia SDK for iOS and Android. See below for in-depth instructions.
 
 
 ## Getting Started

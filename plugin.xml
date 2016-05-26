@@ -67,10 +67,6 @@
         <!-- Plugin Source -->
         <source-file src="src/android/VuforiaPlugin.java" target-dir="src/com/mattrayner/vuforia" />
 
-        <!-- Libraries -->
-        <source-file src="src/vuforia/jniLibs/armeabi/libVuforia.so" target-dir="libs/armeabi-v7a" />
-        <source-file src="src/android/Vuforia.jar" target-dir="libs" />
-
         <!-- Assets -->
         <resource-file src="src/android/res/drawable/devices.png" target="res/drawable/devices.png" />
         <resource-file src="src/android/res/drawable-hdpi/devices.png" target="res/drawable-hdpi/devices.png" />
@@ -129,26 +125,20 @@
         <framework src="SystemConfiguration.framework" weak="true" />
         <framework src="UIKit.framework" weak="true" />
 
-        <source-file src="src/vuforia/lib/arm/libVuforia.a" target-dir="libs" framework="true" />
-
-
         <header-file src="src/ios/ImageTargets/ImageTargetsEAGLView.h" />
         <source-file src="src/ios/ImageTargets/ImageTargetsEAGLView.mm" compiler-flags="-fno-objc-arc"/>
         <header-file src="src/ios/ImageTargets/ImageTargetsViewController.h" />
         <source-file src="src/ios/ImageTargets/ImageTargetsViewController.mm" compiler-flags="-fno-objc-arc"/>
 
-
         <source-file src="src/ios/Utils/ApplicationSession.h" />
         <source-file src="src/ios/Utils/ApplicationSession.mm" compiler-flags="-fno-objc-arc"/>
         <source-file src="src/ios/Utils/GLResourceHandler.h" />
-
 
         <resource-file src="src/ios/VuforiaPlugin.bundle" />
         <resource-file src="src/ios/Utils/shaders/Line.fragsh" target-dir="com.mattrayner.vuforia/shader" />
         <resource-file src="src/ios/Utils/shaders/Line.vertsh" target-dir="com.mattrayner.vuforia/shader" />
         <resource-file src="src/ios/Utils/shaders/Simple.fragsh" target-dir="com.mattrayner.vuforia" />
         <resource-file src="src/ios/Utils/shaders/Simple.vertsh" target-dir="com.mattrayner.vuforia" />
-
 
         <resource-file src="targets/PluginTest.dat" target-dir="com.mattrayner.vuforia" />
         <resource-file src="targets/PluginTest.xml" target-dir="com.mattrayner.vuforia" />

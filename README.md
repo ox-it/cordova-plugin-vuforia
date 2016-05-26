@@ -3,6 +3,7 @@ Cordova-Plugin-Vuforia is a [Cordova][cordova] plugin that uses [Vuforia][vufori
 
 [![NPM Version][shield-npm]][info-npm]
 [![Supported Cordova Versions][shield-cordova]][info-npm]
+[![Supported Vuforia Versions][shield-vuforia]][vuforia]
 [![Build Status][shield-travis]][info-travis]
 [![Bithound Score][shield-bithound]][info-bithound]
 [![License][shield-license]][info-license]
@@ -24,6 +25,7 @@ Cordova-Plugin-Vuforia requires the following:
 * [Cordova][cordova] (Minimum 5.0 - tested to 6.1.1)
   * `cordova-ios@3.*` instructions on `cordova-ios-3` branch
   * `cordova-ios@4.*` (default for Cordova 6.*) instructions are below
+* [Vudforia][vuforia-download] you will need to download the vuforia SDK for iOS and Android. See below for in-depth instructions.
 
 
 ## Getting Started
@@ -32,8 +34,39 @@ Cordova-Plugin-Vuforia requires the following:
 cordova plugin add cordova-plugin-vuforia
 ```
 
-#### Javascript example
-From within your Javascript file, add the following to launch the [Vuforia][vuforia] plugin.
+
+### Vuforia Installation
+Once you have installed the plugin using the command above, we need to make sure your project has the Vuforia libraries. You will need to [download][vuforia-download] the Android and/or iOS SDKs into a `vuforia` directory in the root of your project like so:
+
+[vuforia-stage-1][vuforia-stage-1]
+
+Once you have downloaded the SDK files as above, from the **root** of your project, run the appropriate command below for your system.
+
+
+#### OSX/*NIX systems
+```bash
+ruby plugins/cordova-plugin-vuforia/scripts/extract.rb
+```
+
+### `config.xml` setup
+Once you have successfully extracted the Vuforia libraries, you will need to add the following to your `config.xml` file.
+
+```xml
+<platform name="android">
+    <!-- Vuforia Libraries -->
+    <source-file src="build/lib/armeabi-v7a/libVuforia.so" target-dir="libs/armeabi-v7a" />
+    <source-file src="build/java/vuforia/Vuforia.jar" target-dir="libs" />
+</platform>
+
+<platform name="ios">
+    <!-- Vuforia Libraries -->
+    <source-file src="build/lib/arm/libVuforia.a" target-dir="libs" framework="true" />
+</platform>
+```
+
+
+### Launching Vuforia
+From within your cordovA Javascript file, add the following to launch the [Vuforia][vuforia] plugin.
 ```javascript
 navigator.VuforiaPlugin.startVuforia(
   'PluginTest.xml',
@@ -90,7 +123,7 @@ In order for Xcode to find the [Vuforia][vuforia] library we need to add it's lo
 
 Within `Build Settings > Header Search Paths`, add the following:
 
-`../../plugins/cordova-plugin-vuforia/build/include`
+`../../build/include`
 
 ![[Deployment Target GIF][stage-3]][stage-3]
 
@@ -185,6 +218,7 @@ If you wish to submit a bug fix or feature, you can create a pull request and it
 Cordova-Plugin-Vuforia is licensed under the [MIT License][info-license].
 
 [logo]: https://cdn.rawgit.com/mattrayner/cordova-plugin-vuforia/d14d00720569fea02d29cded4de3c6e617c87537/images/logo.svg
+[vuforia-stage-1]: https://raw.githubusercontent.com/mattrayner/cordova-plugin-vuforia/master/images/vuforia-stage-1.png
 [stage-3]: https://raw.githubusercontent.com/mattrayner/cordova-plugin-vuforia/master/images/stage-3.gif
 [stage-4]: https://raw.githubusercontent.com/mattrayner/cordova-plugin-vuforia/master/images/stage-4.gif
 [stage-5-2]: https://raw.githubusercontent.com/mattrayner/cordova-plugin-vuforia/master/images/stage-5-2.gif
@@ -192,6 +226,7 @@ Cordova-Plugin-Vuforia is licensed under the [MIT License][info-license].
 
 [cordova]: https://cordova.apache.org/
 [vuforia]: https://www.vuforia.com/
+[vuforia-download]: https://developer.vuforia.com/downloads/sdk
 [npm]: https://www.npmjs.com
 [issue-16]: https://github.com/mattrayner/cordova-plugin-vuforia/issues/16
 [cordova-orientation-issue]: https://github.com/apache/cordova-lib/pull/260
@@ -206,3 +241,4 @@ Cordova-Plugin-Vuforia is licensed under the [MIT License][info-license].
 [shield-license]: https://img.shields.io/badge/license-MIT-blue.svg
 [shield-bithound]: https://www.bithound.io/github/mattrayner/cordova-plugin-vuforia/badges/score.svg
 [shield-cordova]: https://img.shields.io/badge/cordova%20support-5.*%20--%206.*-blue.svg
+[shield-vuforia]: https://img.shields.io/badge/vuforia%20support-4.*%20--%205.*-blue.svg

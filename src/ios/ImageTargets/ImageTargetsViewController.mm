@@ -86,8 +86,17 @@
          name:UIApplicationDidBecomeActiveNotification
          object:nil];
 
-        UIView *detailView=[[UIView alloc]initWithFrame:CGRectMake(15, 30, 245, 80)];
-        detailView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.5f];
+        UIColor *headerColor = [UIColor colorWithRed:0.44 green:.70 blue:.7 alpha:1];
+        
+        CGFloat headerHeight = 80;
+        CGFloat imageInset = 20;
+        
+        CGFloat screenWidth = [[UIScreen mainScreen] bounds].size.width;
+        CGFloat screenHeight = [[UIScreen mainScreen] bounds].size.height;
+        
+        UIView *detailView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, screenWidth, headerHeight)];
+//        detailView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.5f];
+        detailView.backgroundColor = headerColor;
         [self.view addSubview:detailView];
 
         UIImage * buttonImage = [UIImage imageNamed:@"close-button.png"];
@@ -97,15 +106,28 @@
          forControlEvents:UIControlEventTouchUpInside];
         [button setTitle:@"" forState:UIControlStateNormal];
         [button setBackgroundImage:buttonImage forState:UIControlStateNormal];
-        button.frame = CGRectMake([[UIScreen mainScreen] bounds].size.width - 50.0, 30.0, 40.0, 40.0);
+        button.frame = CGRectMake(screenWidth - 50.0, 30.0, 40.0, 40.0);
         button.tag = 10;
         [self.view addSubview:button];
 
+
+        
         UILabel *detailLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 180, 60)];
 
+        UIImage *refImage = [UIImage imageNamed:@"all-souls.png"];
+        
+        CGRect imageFrame = CGRectMake(imageInset, imageInset + headerHeight, screenWidth - 2*imageInset, screenHeight - headerHeight - 2*imageInset);
+        
+        UIImageView *refView = [[UIImageView alloc] initWithFrame:imageFrame];
+//        UIImageView *refView = [[UIImageView alloc] initWithImage:refImage];
+        refView.contentMode = UIViewContentModeScaleAspectFit;
+        
+        refView.image = refImage;
+        [self.view addSubview:refView];
+        
         [detailLabel setTextColor:[UIColor whiteColor]];
         [detailLabel setBackgroundColor:[UIColor clearColor]];
-        [detailLabel setFont:[UIFont fontWithName: @"Trebuchet MS" size: 10.0f]];
+        [detailLabel setFont:[UIFont fontWithName: @"Trebuchet MS" size: 20.0f]];
 
         NSLog(@"Vuforia Plugin :: overlayText: %@", self.overlayText);
 
@@ -134,10 +156,10 @@
 
         [detailView addSubview:detailLabel];
 
-        UIImage *image = [UIImage imageNamed:@"iOSDevices.png"];
-        UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
-        imageView.frame = CGRectMake(195, 15, 40, 40);
-        [detailView addSubview:imageView];
+//        UIImage *image = [UIImage imageNamed:@"iOSDevices.png"];
+//        UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
+//        imageView.frame = CGRectMake(195, 15, 40, 40);
+//        [detailView addSubview:imageView];
     }
     return self;
 }

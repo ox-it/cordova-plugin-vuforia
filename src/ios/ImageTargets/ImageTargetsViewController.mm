@@ -29,7 +29,7 @@
 
 @implementation ImageTargetsViewController
 
-- (id)initWithOverlayText:(NSString *)overlayText vuforiaLicenseKey:(NSString *)vuforiaLicenseKey
+- (id)initWithOverlayText:(NSString *)overlayText vuforiaLicenseKey:(NSString *)vuforiaLicenseKey refImageName:(NSString *)refImageName r:(NSString *)r g:(NSString *)g b:(NSString *)b
 {
     NSLog(@"Vuforia Plugin :: INIT IMAGE TARGETS VIEW CONTROLLER");
     NSLog(@"Vuforia Plugin :: OVERLAY: %@", overlayText);
@@ -37,6 +37,10 @@
 
     self.overlayText = overlayText;
     self.vuforiaLicenseKey = vuforiaLicenseKey;
+    self.refImageName = refImageName;
+    self.r = r;
+    self.g = g;
+    self.b = b;
 
     self = [self initWithNibName:nil bundle:nil];
 
@@ -86,7 +90,18 @@
          name:UIApplicationDidBecomeActiveNotification
          object:nil];
 
-        UIColor *headerColor = [UIColor colorWithRed:0.44 green:.70 blue:.7 alpha:1];
+//        NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
+//        numberFormatter.numberStyle = NSNumberFormatterDecimalStyle;
+        
+//        CGFloat fR = [numberFormatter numberFromString:self->_r].floatValue;
+//        CGFloat fG = [numberFormatter numberFromString:self->_g].floatValue;
+//        CGFloat fB = [numberFormatter numberFromString:self->_b].floatValue;
+        
+        CGFloat fR = [self.r floatValue];
+        CGFloat fG = [self.g floatValue];
+        CGFloat fB = [self.b floatValue];
+        
+        UIColor *headerColor = [UIColor colorWithRed:fR green:fG blue:fB alpha:1];
         
         CGFloat headerHeight = 80;
         CGFloat imageInset = 20;
@@ -112,9 +127,9 @@
 
 
         
-        UILabel *detailLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 180, 60)];
+        UILabel *detailLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, screenWidth - 60, 60)];
 
-        UIImage *refImage = [UIImage imageNamed:@"all-souls.png"];
+        UIImage *refImage = [UIImage imageNamed:self->_refImageName];
         
         CGRect imageFrame = CGRectMake(imageInset, imageInset + headerHeight, screenWidth - 2*imageInset, screenHeight - headerHeight - 2*imageInset);
         

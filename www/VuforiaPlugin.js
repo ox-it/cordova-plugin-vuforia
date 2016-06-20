@@ -1,5 +1,5 @@
 var VuforiaPlugin = {
-  startVuforia: function(imageFile ,imageTargets, overlayCopy, vuforiaLicense, imageFoundCallback, errorCallback){
+  startVuforia: function(imageFile ,imageTargets, overlayCopy, vuforiaLicense, refImageName, headerColor, imageFoundCallback, errorCallback){
 
     cordova.exec(
 
@@ -18,7 +18,7 @@ var VuforiaPlugin = {
       // Execute this method on the above class
       'cordovaStartVuforia',
       // An array containing one String.
-      [ imageFile , imageTargets, overlayCopy, vuforiaLicense ]
+      [ imageFile , imageTargets, overlayCopy, vuforiaLicense, refImageName, headerColor.R/255, headerColor.G/255, headerColor.B/255 ]
     );
   }
 };

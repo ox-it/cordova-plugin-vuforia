@@ -29,9 +29,13 @@
 @property (retain) NSArray *imageTargetNames;
 @property (retain) NSString *overlayText;
 @property (retain) NSString *vuforiaLicenseKey;
+@property (retain) NSString *refImageName;
+@property (retain) NSString *r;
+@property (retain) NSString *g;
+@property (retain) NSString *b;
 
 @property (nonatomic) bool delaying;
 
-- (id)initWithOverlayText:(NSString *)overlayText vuforiaLicenseKey:(NSString *)vuforiaLicenseKey;
+- (id)initWithOverlayText:(NSString *)overlayText vuforiaLicenseKey:(NSString *)vuforiaLicenseKey refImageName:(NSString *)refImageName r:(NSString *)r g:(NSString *)g b:(NSString *)b;
 
 @end

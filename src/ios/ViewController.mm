@@ -11,12 +11,17 @@
 @implementation ViewController
 
 
--(id)initWithFileName:(NSString *)fileName targetNames:(NSArray *)imageTargetNames customOverlayText:(NSString *)overlayText vuforiaLicenseKey:(NSString *)vuforiaLicenseKey {
+-(id)initWithFileName:(NSString *)fileName targetNames:(NSArray *)imageTargetNames customOverlayText:(NSString *)overlayText vuforiaLicenseKey:(NSString *)vuforiaLicenseKey refImageName:(NSString *)refImageName r:(NSString *)r g:(NSString *)g b:(NSString *)b {
     
     self = [super init];
     self.imageTargets = [[NSDictionary alloc] initWithObjectsAndKeys: fileName, @"imageTargetFile", imageTargetNames, @"imageTargetNames", nil];
     self.overlayText = overlayText;
     self.vuforiaLicenseKey = vuforiaLicenseKey;
+    self.refImageName = refImageName;
+    self.r = r;
+    self.g = g;
+    self.b = b;
+    
     NSLog(@"Vuforia Plugin :: initWithFileName: %@", fileName);
     NSLog(@"Vuforia Plugin :: overlayText: %@", self.overlayText);
     NSLog(@"Vuforia Plugin :: License key: %@", self.vuforiaLicenseKey);
@@ -36,7 +41,7 @@
     [super viewDidAppear:animated];
 
     if (self.launchedCamera == false) {
-        ImageTargetsViewController *vc = [[ImageTargetsViewController alloc]  initWithOverlayText:self.overlayText vuforiaLicenseKey:self.vuforiaLicenseKey];
+        ImageTargetsViewController *vc = [[ImageTargetsViewController alloc]  initWithOverlayText:self.overlayText vuforiaLicenseKey:self.vuforiaLicenseKey refImageName:self.refImageName r:self.r g:self.g b:self.b];
         self.launchedCamera = true;
         
         vc.imageTargetFile = [self.imageTargets objectForKey:@"imageTargetFile"];

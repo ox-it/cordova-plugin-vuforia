@@ -89,13 +89,6 @@
          selector:@selector(resumeAR)
          name:UIApplicationDidBecomeActiveNotification
          object:nil];
-
-//        NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
-//        numberFormatter.numberStyle = NSNumberFormatterDecimalStyle;
-        
-//        CGFloat fR = [numberFormatter numberFromString:self->_r].floatValue;
-//        CGFloat fG = [numberFormatter numberFromString:self->_g].floatValue;
-//        CGFloat fB = [numberFormatter numberFromString:self->_b].floatValue;
         
         CGFloat fR = [self.r floatValue];
         CGFloat fG = [self.g floatValue];
@@ -110,31 +103,36 @@
         CGFloat screenHeight = [[UIScreen mainScreen] bounds].size.height;
         
         UIView *detailView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, screenWidth, headerHeight)];
-//        detailView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.5f];
         detailView.backgroundColor = headerColor;
         [self.view addSubview:detailView];
 
-        UIImage * buttonImage = [UIImage imageNamed:@"close-button.png"];
         UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
         [button addTarget:self
                    action:@selector(buttonPressed)
          forControlEvents:UIControlEventTouchUpInside];
         [button setTitle:@"" forState:UIControlStateNormal];
-        [button setBackgroundImage:buttonImage forState:UIControlStateNormal];
-        button.frame = CGRectMake(screenWidth - 50.0, 30.0, 40.0, 40.0);
+        button.frame = CGRectMake(screenWidth - 80.0, 30.0, 60.0, 40.0);
         button.tag = 10;
         [self.view addSubview:button];
 
 
+
+        UILabel *skipLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0, 0.0, 0.0, 0.0)];
+        [skipLabel setText:@"skip ›"];
+        [skipLabel setTextColor:[UIColor whiteColor]];
+        [skipLabel setFont:[UIFont fontWithName:@"Trebuchet MS" size:20.0f]];
+        [skipLabel setBackgroundColor:[UIColor clearColor]];
+        [skipLabel sizeToFit];
+
+        [button addSubview:skipLabel];
         
-        UILabel *detailLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, screenWidth - 60, 60)];
+        UILabel *detailLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, screenWidth - 90, 60)];
 
         UIImage *refImage = [UIImage imageNamed:self->_refImageName];
         
         CGRect imageFrame = CGRectMake(imageInset, imageInset + headerHeight, screenWidth - 2*imageInset, screenHeight - headerHeight - 2*imageInset);
         
         UIImageView *refView = [[UIImageView alloc] initWithFrame:imageFrame];
-//        UIImageView *refView = [[UIImageView alloc] initWithImage:refImage];
         refView.contentMode = UIViewContentModeScaleAspectFit;
         
         refView.image = refImage;
@@ -171,10 +169,6 @@
 
         [detailView addSubview:detailLabel];
 
-//        UIImage *image = [UIImage imageNamed:@"iOSDevices.png"];
-//        UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
-//        imageView.frame = CGRectMake(195, 15, 40, 40);
-//        [detailView addSubview:imageView];
     }
     return self;
 }

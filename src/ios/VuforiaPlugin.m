@@ -30,7 +30,7 @@
     UINavigationController *nc = (UINavigationController *)[UIApplication sharedApplication].keyWindow.rootViewController;
           self.imageRecViewController = [[ViewController alloc] initWithFileName:imageTargetfile targetNames:imageTargetNames customOverlayText:customOverlayText vuforiaLicenseKey:vuforiaLicenseKey refImageName:refImageName r:r g:g b:b];
     
-    [nc pushViewController:self.imageRecViewController animated:YES];
+    [nc pushViewController:self.imageRecViewController animated:NO];
 }
 
 
@@ -55,7 +55,7 @@
     [self.commandDelegate sendPluginResult:pluginResult callbackId:self.command.callbackId];
 
     UINavigationController *nc = (UINavigationController *)[UIApplication sharedApplication].keyWindow.rootViewController;
-    [nc popToRootViewControllerAnimated:YES];
+    [nc popToRootViewControllerAnimated:NO];
 }
 
 @end

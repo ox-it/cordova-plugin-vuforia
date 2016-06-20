@@ -47,7 +47,7 @@
         vc.imageTargetFile = [self.imageTargets objectForKey:@"imageTargetFile"];
         vc.imageTargetNames = [self.imageTargets objectForKey:@"imageTargetNames"];
         
-        [self.navigationController pushViewController:vc animated:YES];
+        [self.navigationController pushViewController:vc animated:NO];
     }
 }
 

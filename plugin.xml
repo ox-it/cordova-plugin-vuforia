@@ -77,6 +77,12 @@
         <resource-file src="src/android/res/drawable-xxhdpi/devices.png" target="res/drawable-xxhdpi/devices.png" />
         <resource-file src="src/android/res/layout/camera_overlay.xml" target="res/layout/camera_overlay.xml" />
 
+        <resource-file src="src/android/res/drawable/blackboard_sketch_landscape.png" target="res/drawable/blackboard_sketch_landscape.png" />
+        <resource-file src="src/android/res/drawable/blackboard_sketch.png" target="res/drawable/blackboard_sketch.png" />
+        <resource-file src="src/android/res/drawable/globe_sketch.png" target="res/drawable/globe_sketch.png" />
+        <resource-file src="src/android/res/drawable/marconi_sketch.png" target="res/drawable/marconi_sketch.png" />
+        <resource-file src="src/android/res/drawable/moon_sketch.png" target="res/drawable/moon_sketch.png" />
+
         <source-file src="src/android/java/com/mattrayner/vuforia/app/ImageTargets.java"
                      target-dir="src/java/com/mattrayner/vuforia/app" />
         <source-file src="src/android/java/com/mattrayner/vuforia/app/ImageTargetRenderer.java"

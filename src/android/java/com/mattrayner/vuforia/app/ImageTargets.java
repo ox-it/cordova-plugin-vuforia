@@ -34,8 +34,9 @@ import android.widget.CheckBox;
 import android.widget.RelativeLayout;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.ImageView;
 import android.widget.Toast;
-//import android.R;
+import android.R;
 //import com.example.hello.R;
 
 import com.qualcomm.vuforia.CameraDevice;
@@ -102,6 +103,10 @@ public class ImageTargets extends Activity implements ApplicationControl
 
     // Vuforia license key
     String mLicenseKey;
+    
+    int mBGColor;
+    
+    String mRefImageName;
 
     // Called when the activity first starts or the user navigates back to an
     // activity.
@@ -118,7 +123,7 @@ public class ImageTargets extends Activity implements ApplicationControl
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         //Force Landscape
-        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         //Grab a reference to our Intent so that we can get the extra data passed into it
         Intent intent = getIntent();
@@ -139,6 +144,18 @@ public class ImageTargets extends Activity implements ApplicationControl
         String target_file = intent.getStringExtra("IMAGE_TARGET_FILE");
         mTargets = intent.getStringExtra("IMAGE_TARGETS");
         mOverlayMessage = intent.getStringExtra("OVERLAY_TEXT");
+        mRefImageName = intent.getStringExtra("REF_IMAGE_NAME");
+        //remove extension for image name
+        mRefImageName = mRefImageName.substring(0, mRefImageName.lastIndexOf('.'));
+        float rFloat = Float.parseFloat(intent.getStringExtra("R"));
+        int rInt = Math.round(rFloat * 255);
+        float gFloat = Float.parseFloat(intent.getStringExtra("G"));
+        int gInt = Math.round(gFloat * 255);
+        float bFloat = Float.parseFloat(intent.getStringExtra("B"));
+        int bInt = Math.round(bFloat * 255);
+        
+        mBGColor = Color.rgb(rInt, gInt, bInt);
+        
 
         startLoadingAnimation();
 
@@ -337,8 +354,26 @@ public class ImageTargets extends Activity implements ApplicationControl
 
         Log.d(LOGTAG, "Overlay Text: "+mOverlayMessage);
 
+
         // Updates the overlay message with the text passed-in
         overlayText.setText( mOverlayMessage );
+        overlayText.setBackgroundColor( mBGColor );
+        
+        
+        TextView skipText = (TextView) mUILayout.findViewById(resources.getIdentifier("button_skip", "id", package_name));
+        skipText.setBackgroundColor( mBGColor );
+        
+        Log.d(LOGTAG, "Pocket - about to try to set image"+mOverlayMessage);
+        
+        //set relevant image
+        ImageView imageView = (ImageView) mUILayout.findViewById(resources.getIdentifier("reference_image", "id", package_name));
+
+        mRefImageName = "moon_sketch";
+
+        int resID = this.getResources().getIdentifier(mRefImageName, "drawable", this.getPackageName());
+        Log.d(LOGTAG, "Pocket - using ref image: " + mRefImageName);
+        Log.d(LOGTAG, "Pocket - res id is:" + resID);
+        imageView.setImageResource(resID);
 
         // Adds the inflated layout to the view
         addContentView(mUILayout, new LayoutParams(LayoutParams.MATCH_PARENT,
@@ -644,5 +679,12 @@ public class ImageTargets extends Activity implements ApplicationControl
         mIntent.putExtra("name", "CLOSED");
         setResult(6, mIntent);
         super.onBackPressed();
+    }
+    
+    public void skip() {
+        // Intent mIntent = new Intent();
+        // mIntent.putExtra("name", "SKIP");
+        // setResult(0, mIntent);
+        // finish();
     }
 }

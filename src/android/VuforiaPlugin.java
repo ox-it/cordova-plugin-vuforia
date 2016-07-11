@@ -50,6 +50,11 @@ public class VuforiaPlugin extends CordovaPlugin {
         String targets = args.getJSONArray(1).toString();
         String overlayText = args.getString(2);
         String vuforiaLicense = args.getString(3);
+        String refImageName = args.getString(4);
+        String r = args.getString(5);
+        String g = args.getString(6);
+        String b = args.getString(7);
+        
 
         Log.d(LOGTAG, "Args: "+args);
         Log.d(LOGTAG, "Text: "+overlayText);
@@ -64,6 +69,10 @@ public class VuforiaPlugin extends CordovaPlugin {
         intent.putExtra("IMAGE_TARGETS", targets);
         intent.putExtra("OVERLAY_TEXT", overlayText);
         intent.putExtra("LICENSE_KEY", vuforiaLicense);
+        intent.putExtra("REF_IMAGE_NAME", refImageName);
+        intent.putExtra("R", r);
+        intent.putExtra("G", g);
+        intent.putExtra("B", b);
 
         if(cordova.hasPermission(CAMERA)) {
             // Launch a new activity with Vuforia in it. Expect it to return a result.
@@ -111,6 +120,7 @@ public class VuforiaPlugin extends CordovaPlugin {
                 try {
                     JSONObject json = new JSONObject();
                     json.put("imageName", name);
+                    json.put("success", true);
                     callback.sendPluginResult(new PluginResult(PluginResult.Status.OK, json));
                 } catch( JSONException e ) {
                     Log.d(LOGTAG, "JSON ERROR: " + e);

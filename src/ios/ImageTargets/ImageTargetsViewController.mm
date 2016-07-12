@@ -58,6 +58,8 @@
 
         // Custom initialization
         self.title = @"Image Targets";
+
+        
         // Create the EAGLView with the screen dimensions
         CGRect screenBounds = [[UIScreen mainScreen] bounds];
         viewFrame = screenBounds;
@@ -168,6 +170,9 @@
         detailLabel.frame = frameRect;
 
         [detailView addSubview:detailLabel];
+        
+        self.view.backgroundColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.4];
+
 
     }
     return self;

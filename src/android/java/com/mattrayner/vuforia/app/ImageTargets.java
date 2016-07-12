@@ -368,8 +368,6 @@ public class ImageTargets extends Activity implements ApplicationControl
         //set relevant image
         ImageView imageView = (ImageView) mUILayout.findViewById(resources.getIdentifier("reference_image", "id", package_name));
 
-        mRefImageName = "moon_sketch";
-
         int resID = this.getResources().getIdentifier(mRefImageName, "drawable", this.getPackageName());
         Log.d(LOGTAG, "Pocket - using ref image: " + mRefImageName);
         Log.d(LOGTAG, "Pocket - res id is:" + resID);
@@ -681,10 +679,10 @@ public class ImageTargets extends Activity implements ApplicationControl
         super.onBackPressed();
     }
     
-    public void skip() {
-        // Intent mIntent = new Intent();
-        // mIntent.putExtra("name", "SKIP");
-        // setResult(0, mIntent);
+    public void skip(View view) {
+        Intent mIntent = new Intent();
+        mIntent.putExtra("name", "SKIP");
+        setResult(0, mIntent);
         // finish();
     }
 }

@@ -126,7 +126,15 @@ public class VuforiaPlugin extends CordovaPlugin {
                     Log.d(LOGTAG, "JSON ERROR: " + e);
                 }
             } else {
-                Log.d(LOGTAG, "Error - received code: " + resultCode);
+                try {
+                    Log.d(LOGTAG, "Error - received code: " + resultCode);
+                    JSONObject json = new JSONObject();
+                    json.put("success", false);
+                    json.put("resultcode", resultCode);
+                    callback.sendPluginResult(new PluginResult(PluginResult.Status.OK, json));
+                } catch( JSONException e ) {
+                    Log.d(LOGTAG, "JSON ERROR: " + e);
+                }
             }
         }
     }

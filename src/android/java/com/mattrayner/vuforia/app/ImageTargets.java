@@ -683,6 +683,6 @@ public class ImageTargets extends Activity implements ApplicationControl
         Intent mIntent = new Intent();
         mIntent.putExtra("name", "SKIP");
         setResult(0, mIntent);
-        // finish();
+        finish();
     }
 }

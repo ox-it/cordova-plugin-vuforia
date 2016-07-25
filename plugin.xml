@@ -54,7 +54,7 @@
             <activity
                     android:name="com.mattrayner.vuforia.app.ImageTargets"
                     android:configChanges="orientation|keyboardHidden|screenSize|smallestScreenSize"
-                    android:screenOrientation="landscape"
+                    android:screenOrientation="portrait"
                     android:noHistory="true">
             </activity>
         </config-file>
@@ -77,7 +77,6 @@
         <resource-file src="src/android/res/drawable-xxhdpi/devices.png" target="res/drawable-xxhdpi/devices.png" />
         <resource-file src="src/android/res/layout/camera_overlay.xml" target="res/layout/camera_overlay.xml" />
 
-        <resource-file src="src/android/res/drawable/blackboard_sketch_landscape.png" target="res/drawable/blackboard_sketch_landscape.png" />
         <resource-file src="src/android/res/drawable/blackboard_sketch.png" target="res/drawable/blackboard_sketch.png" />
         <resource-file src="src/android/res/drawable/globe_sketch.png" target="res/drawable/globe_sketch.png" />
         <resource-file src="src/android/res/drawable/marconi_sketch.png" target="res/drawable/marconi_sketch.png" />
@@ -162,7 +161,6 @@
         <resource-file src="targets/PluginTest.dat" target-dir="com.mattrayner.vuforia" />
         <resource-file src="targets/PluginTest.xml" target-dir="com.mattrayner.vuforia" />
 
-        <resource-file src="src/ios/Assets/ImageTargets/blackboard_sketch_landscape.png" target-dir="Resources" />
         <resource-file src="src/ios/Assets/ImageTargets/blackboard_sketch.png" target-dir="Resources" />
         <resource-file src="src/ios/Assets/ImageTargets/close-button.png" target-dir="Resources" />
         <resource-file src="src/ios/Assets/ImageTargets/globe_sketch.png" target-dir="Resources" />

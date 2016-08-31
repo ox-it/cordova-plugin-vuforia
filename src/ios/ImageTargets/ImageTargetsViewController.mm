@@ -171,7 +171,7 @@
 
         [detailView addSubview:detailLabel];
         
-        self.view.backgroundColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.4];
+        self.view.backgroundColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.3];
 
 
     }

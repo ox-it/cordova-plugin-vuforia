@@ -3,7 +3,22 @@
     android:id="@+id/camera_overlay_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent" 
-    android:background="#ccffffff">
+    android:background="#55ffffff">
+    
+        
+    <ImageView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:scaleType="centerCrop"
+    android:id="@+id/reference_image"
+    android:paddingLeft="60dp"
+    android:paddingRight="60dp"
+    android:paddingTop="60dp"
+    android:paddingBottom="60dp"
+    android:background="#88ffffff"
+    
+    android:layout_alignParentBottom="true"
+    />
     
     <ProgressBar
     style="@android:style/Widget.ProgressBar"
@@ -76,19 +91,6 @@
     android:paddingBottom="0dp"
     android:text="Skip »"
     android:onClick="skip" />
-    
-    <ImageView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:scaleType="centerCrop"
-    android:id="@+id/reference_image"
-    android:paddingLeft="60dp"
-    android:paddingRight="60dp"
-    android:paddingTop="60dp"
-    android:paddingBottom="60dp"
-    android:background="#80ffffff"
-    
-    android:layout_alignParentBottom="true"
-    />
+
     
 </RelativeLayout>

@@ -68,9 +68,9 @@ module.exports = function(context) {
     let appDelegateFilePath = path.join(cwd, 'platforms', 'ios', projectName, 'Classes', 'AppDelegate.m');
 
     // Ugly file modification but does the job.
-    let oldMethod = xcodeInfos.methodToReplace + xcodeInfos.newMethod;
+    let oldMethod = xcodeInfos.methodToReplace;
 
-    let newMethod = xcodeInfos.replaceMethod;
+    let newMethod = xcodeInfos.replaceMethod + xcodeInfos.addMethod;
 
     try {
       let appDelegateFileExists = fs.accessSync(appDelegateFilePath);

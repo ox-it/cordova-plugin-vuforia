@@ -75,7 +75,7 @@ module.exports = function(context) {
     // Ugly file modification but does the job.
     let oldMethod = xcodeInfos.methodToReplace;
 
-    let newMethod = xcodeInfos.replaceMethod;
+    let newMethod = xcodeInfos.replaceMethod + xcodeInfos.addMethod;
 
     try {
       let appDelegateFileExists = fs.accessSync(appDelegateFilePath);

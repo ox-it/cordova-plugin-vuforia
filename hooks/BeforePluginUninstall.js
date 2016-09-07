@@ -68,7 +68,7 @@ module.exports = function(context) {
     let appDelegateFilePath = path.join(cwd, 'platforms', 'ios', projectName, 'Classes', 'AppDelegate.m');
 
     // Ugly file modification but does the job.
-    let oldMethod = xcodeInfos.methodToReplace;
+    let oldMethod = xcodeInfos.methodToReplace + xcodeInfos.newMethod;
 
     let newMethod = xcodeInfos.replaceMethod;
 
